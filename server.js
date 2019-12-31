@@ -31,14 +31,6 @@ const db = require("./models");
 db.sequelize.sync().then(function(){
     app.listen(PORT, function(){
         console.log("App is listening on port " + PORT);
-        db.Burger.update(
-            { name: 'Double cheese beef burger' },
-            { where: { id: 2 } }
-        );
-        db.Burger.update(
-            { name: 'Cheese bacon burger' },
-            { where: { id: 3 } }
-        );
     });
 });
 
