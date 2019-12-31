@@ -1,0 +1,39 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: rebeccapurple;
+    font-family: 'Roboto', sans-serif;
+}
+button {
+    margin: 10px;
+    padding: 10px;
+    background-color: green;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    color: white;
+}
+.burger-js {
+    background-color: #9F5A0D;
+    margin: 5px 0;
+    padding: 7px;
+}
+.devoured {
+    background-color: #C7C6C7;
+    padding: 3px;
+    border-bottom: 0.5px #F8F9FA solid;
+    font-size: 13px;
+    
+}
+#devour {
+    padding: 5px;
+}
+
+footer {
+    color: white;
+    font-size: 11px;
+    font-style: italic;
+    text-align: center;
+    padding: 15px;
+    background-color: black;
+}
