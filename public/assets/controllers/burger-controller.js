@@ -11,6 +11,10 @@ function addBurger() {
             name: burgerEl.value,
             isDevoured: "false"
         }).then(function (res) {
+            // clear textarea and set focus
+            burgerEl.value = "";
+            burgerEl.focus();
+
         }).catch(function (err) {
             console.log(err);
         });
