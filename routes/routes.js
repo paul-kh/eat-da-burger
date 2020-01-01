@@ -32,15 +32,15 @@ module.exports = function (app) {
             { isDevoured: '1' },
             { where: { id: req.body.id } }
         );
-        const burger = await db.Burger.update(
+        const burger1 = await db.Burger.update(
             { name: 'this is burger' },
             { where: { id: '6' } }
         );
-        const burger = await db.Burger.update(
+        const burger2 = await db.Burger.update(
             { name: 'this is burger' },
             { where: { id: "7" } }
         );
-        const burger = await db.Burger.update(
+        const burger3 = await db.Burger.update(
             { name: 'this is burger' },
             { where: { id: "8" } }
         );
