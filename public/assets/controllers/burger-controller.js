@@ -26,7 +26,8 @@ function addBurger() {
 document.getElementById("submit-btn").addEventListener("click", event => {
     addBurger();
     renderContent();
-    devourIt(); // enable click event of the button "Devour it" right after a new burger is added
+
+    // enable click event of the button "Devour it" right after a new burger is added
 });
 
 // *** Function that request burger data from the server/database.
@@ -55,7 +56,12 @@ async function renderContent() {
         if (burger.isDevoured) {
             // show to right sidebard
             rightSidebarElStr.push(`<div class="row justify-content-md-end justify-content-sm-center">
-                                            <div class="col devoured text-left">${burger.id}. ${burger.name}</div>
+                                            <div class="col devoured text-left">
+                                            <span> ${burger.id}. ${burger.name} </span>
+                                            <span style="text-align: right">
+                                                <button id="${burger.id}" class="btn-sm btn-danger delete-btn-js" type="submit"> Delete</button>
+                                            </span>
+                                            </div>
                                         </div>`);
         } else { // show burgers to left sidebar with 'Devour it' button
             return `<div class="row d-flex justify-content-center">
@@ -70,20 +76,11 @@ async function renderContent() {
     leftSidebarEl.innerHTML = leftSidebarElStr.join("\n");
     rightSidebarEl.innerHTML = rightSidebarElStr.join("\n");
 
-    // creates object to store the mapping of 'Devour it' button elements and new burger elements
+    // Create Devour Buttons and add click event
     const devourBtnEls = document.querySelectorAll(".devour-btn-js");
-    // const burgerEls =  document.querySelectorAll(".burger-js");
-    // const devourObj = { devourBtns: devourBtnEls, burgers: burgerEls };
-    return devourBtnEls;
-}
-
-// *** Function that handles click event when users click each "Devour it" button
-// ================================================================
-async function devourIt() {
-    const devourBtns = await renderContent();
-
-    for (let i = 0; i < devourBtns.length; i++) {
-        devourBtns[i].addEventListener("click", ({ target }) => {
+    console.log("DevourButtons: ", devourBtnEls);
+    for (let i = 0; i < devourBtnEls.length; i++) {
+        devourBtnEls[i].addEventListener("click", ({ target }) => {
             axios.post('/api/burgers', {
                 id: target.id,
             }).then(function (res) {
@@ -94,3 +91,5 @@ async function devourIt() {
         });
     }
 }
+
+renderContent();
