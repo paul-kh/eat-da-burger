@@ -26,8 +26,6 @@ function addBurger() {
 // =============================================================================
 document.getElementById("submit-btn").addEventListener("click", event => {
     addBurger();
-
-
     // enable click event of the button "Devour it" right after a new burger is added
 });
 
