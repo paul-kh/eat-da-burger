@@ -36,10 +36,10 @@ module.exports = function (app) {
     });
     // route to updage burger in DB
     app.delete("/api/burgers/:id", async function (req, res) {
-        console.log("params:", req.body.params);
-        // const burger = await db.Burger.destroy(
-        //     { where: { id: req.body.params.id } }
-        // );
-        // res.json(burger);
+        console.log("params:", req.params);
+        const burger = await db.Burger.destroy(
+            { where: { id: req.params.id } }
+        );
+        res.json(burger);
     });
 }
