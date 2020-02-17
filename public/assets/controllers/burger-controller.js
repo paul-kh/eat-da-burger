@@ -19,13 +19,14 @@ function addBurger() {
             console.log(err);
         });
     }
+    renderContent();
 }
 
 // *** Add 'click' event when users click submit button to add a new burger name
 // =============================================================================
 document.getElementById("submit-btn").addEventListener("click", event => {
     addBurger();
-    renderContent();
+
 
     // enable click event of the button "Devour it" right after a new burger is added
 });
