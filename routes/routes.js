@@ -13,7 +13,7 @@ module.exports = function (app) {
                 }
             );
             res.json(burger);
-        } 
+        }
         catch (error) {
             console.log(error);
         }
@@ -23,7 +23,7 @@ module.exports = function (app) {
     app.get("/api/burgers", (req, res) => {
         db.Burger.findAll({}).then(burger => {
             res.json(burger);
-        }).catch(function(error){ console.log(error)});
+        }).catch(function (error) { console.log(error) });
     });
     // route to updage burger in DB
     app.post("/api/burgers", async function (req, res) {
@@ -33,5 +33,13 @@ module.exports = function (app) {
             { where: { id: req.body.id } }
         );
         res.json(burger);
+    });
+    // route to updage burger in DB
+    app.delete("/api/burgers/:id", async function (req, res) {
+        console.log("params:", req.body.params);
+        // const burger = await db.Burger.destroy(
+        //     { where: { id: req.body.params.id } }
+        // );
+        // res.json(burger);
     });
 }

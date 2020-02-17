@@ -55,17 +55,15 @@ async function renderContent() {
     const leftSidebarElStr = burgers.map(burger => {
         if (burger.isDevoured) {
             // show to right sidebard
-            rightSidebarElStr.push(`<div class="row justify-content-md-end justify-content-sm-center">
-                                            <div class="col devoured text-left">
-                                            <span> ${burger.id}. ${burger.name} </span>
-                                            <span style="text-align: right">
-                                                <button id="${burger.id}" class="btn-sm btn-danger delete-btn-js" type="submit"> Delete</button>
-                                            </span>
+            rightSidebarElStr.push(`<div class="row devoured">
+                                            <div class="col  text-left"> ${burger.name} </div>
+                                            <div class="col text-right">
+                                            <button id="${burger.id}" class="btn-sm btn-danger remove-btn-js m-0" type="submit"> Remove</button>
                                             </div>
                                         </div>`);
         } else { // show burgers to left sidebar with 'Devour it' button
             return `<div class="row d-flex justify-content-center">
-                            <div class="col-8 col-md-7 col-lg-8 burger-js text-left">${burger.id}. ${burger.name}</div>
+                            <div class="col-8 col-md-7 col-lg-8 burger-js text-left">${burger.name}</div>
                             <div class="col-4 col-md-5 col-lg-4">
                                 <button id="${burger.id}" class="btn-sm btn-warning devour-btn-js" type="submit"> Devour it!</button>
                             </div>
@@ -88,6 +86,20 @@ async function renderContent() {
             }).catch(function (err) {
                 console.log(err);
             });
+        });
+    }
+
+    // Create Delete Buttons
+    const removeBtnEls = document.querySelectorAll(".remove-btn-js");
+    console.log("Remove btns: ", removeBtnEls);
+    for (let i = 0; i < removeBtnEls.length; i++) {
+        removeBtnEls[i].addEventListener("click", ({ target }) => {
+            axios.delete(`/api/burgers/${target.id}`).then(function (res) {
+                renderContent(); // moves the devoured burger to the right sidebar and updates database
+            }).catch(function (err) {
+                console.log(err);
+            });
+
         });
     }
 }
