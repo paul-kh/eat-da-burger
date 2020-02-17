@@ -14,12 +14,11 @@ function addBurger() {
             // clear textarea and set focus
             burgerEl.value = "";
             burgerEl.focus();
-
+            renderContent();
         }).catch(function (err) {
             console.log(err);
         });
     }
-    renderContent();
 }
 
 // *** Add 'click' event when users click submit button to add a new burger name
@@ -75,7 +74,6 @@ async function renderContent() {
 
     // Create Devour Buttons and add click event
     const devourBtnEls = document.querySelectorAll(".devour-btn-js");
-    console.log("DevourButtons: ", devourBtnEls);
     for (let i = 0; i < devourBtnEls.length; i++) {
         devourBtnEls[i].addEventListener("click", ({ target }) => {
             axios.post('/api/burgers', {
@@ -90,7 +88,6 @@ async function renderContent() {
 
     // Create Delete Buttons
     const removeBtnEls = document.querySelectorAll(".remove-btn-js");
-    console.log("Remove btns: ", removeBtnEls);
     for (let i = 0; i < removeBtnEls.length; i++) {
         removeBtnEls[i].addEventListener("click", ({ target }) => {
             axios.delete(`/api/burgers/${target.id}`).then(function (res) {
@@ -98,7 +95,6 @@ async function renderContent() {
             }).catch(function (err) {
                 console.log(err);
             });
-
         });
     }
 }
