@@ -8,7 +8,7 @@
 
 * Live site on Heroku: https://eat-da-burger-pc.herokuapp.com/
 
-![Alt text](./public/assets/img/screenshot.png?raw=true "Screenshot")
+![Alt text](./public/assets/img/screenshot1.png?raw=true "Screenshot")
 
 
 
