@@ -14,6 +14,6 @@
 
 # Technologies Used
 
-* This is a one-page app that uses Node, Express, mySQL as database to store burger data, and sequelize as ORM to model tables in the database.
+* This is a one-page app that uses Node, Express, MySQL as database to store burger data, and sequelize as ORM to model tables in the database.
 * The app is deployed on Heroku
 
